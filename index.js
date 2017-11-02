@@ -199,7 +199,7 @@ MqttGarageDoorAccessory.prototype = {
         			this.Running = true; 
 				this.TimeOut = setTimeout(this.setFinalDoorState.bind(this), this.doorRunInSeconds * 1000);
 	        		this.log("Triggering GarageDoor Command");
-				this.client.publish(this.topicStatusSet, "on");
+				this.client.publish(this.topicStatusSet, status == DoorState.OPEN ? "open" : "closed");
             			this.currentDoorState.setValue( (status == DoorState.OPEN ?  DoorState.OPENING : DoorState.CLOSING ) );
 			}
 		};
